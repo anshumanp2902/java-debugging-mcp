@@ -924,8 +924,13 @@ impl RequestHandler {
                 data: None,
             });
         }
+        let tools = if crate::compact::enabled() {
+            crate::compact::compact_tools(tools::get_tools())
+        } else {
+            tools::get_tools()
+        };
         let result = ListToolsResult {
-            tools: tools::get_tools(),
+            tools,
             ttl_ms: crate::protocol::CACHE_TTL_MS,
             cache_scope: crate::protocol::CACHE_SCOPE.to_string(),
         };

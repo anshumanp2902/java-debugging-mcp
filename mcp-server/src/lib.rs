@@ -54,6 +54,7 @@ use tracing::error;
 
 mod args;
 mod classfile;
+mod compact;
 mod generics;
 #[doc(hidden)]
 pub mod handlers;
